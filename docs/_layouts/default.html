@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ site.data.app.name }} | Tuto Gamebuino</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/syntax.css">
+    <link rel="shortcut icon" href="assets/favicons/favicon-32x32.png" type="image/png">
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/favicons/favicon-96x96.png">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="assets/js/utils.js"></script>
+  </head>
+  <body>
+    <header>
+        <div class="grid">
+            <div class="app cell">
+                <div class="icon">
+                    <img src="{{ 'assets/app-icons/' | append:site.data.app.icon }}" alt="icon" />
+                </div>
+                <div class="details">
+                    <p class="name">{{ site.data.app.name }}</p>
+                    <p><a class="github" href="{{ site.github.repository_url }}"><i class="fab fa-github"></i> Dépôt GitHub</a></p>
+                </div>
+            </div>
+            <div class="logo cell"><span class="reverse">&copy;</span> {{ "now" | date: "%Y" }} Stéphane Calderoni</div>
+        </div>
+    </header>
+    <div class="wrapper">
+        <nav id="toc">
+            <ul></ul>
+        </nav>
+        <nav id="pages">
+            <ul>
+                {% assign current = page.url  | relative_url %}
+                {% for item in site.data.headings %}
+                    {% assign target  = item.link | relative_url %}
+                    <li class="{% if current == target %}active{% endif %}""><a href="{{ target }}">{{ item.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+        <section id="page">
+            <div class="heading">
+                <div class="description">
+                    <h1>{{ page.title }}</h1>
+                    <h2>{{ page.subtitle }}</h2>
+                    <p class="update_time">
+                        Dernière modification le
+                        {{ "now" | date: "%d" }}
+                        {% assign m = "now" | date: "%-m" | minus: 1 %}
+                        {{ site.data.fr.months[m] }}
+                        {{ "now" | date: "%Y à %H:%M" }}
+                        GMT+4
+                    </p>
+                </div>
+                <div class="screen">
+                    <img src="{{ 'assets/app-screens/' | append:site.data.app.screen }}" alt="screen" />
+                </div>
+            </div>
+            <div id="content">
+                {{ content }}
+            </div>
+        </section>
+        <div id="credit"><span class="reverse">&copy;</span> {{ "now" | date: "%Y" }} Stéphane Calderoni</div>
+    </div>
+  </body>
+</html>

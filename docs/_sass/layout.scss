@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Teko');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background-color: #74655b;
+    font-family: Roboto;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 96px;
+    padding: 16px 0;
+    z-index: 100;
+    background-color: #332c28;
+    box-shadow: 0px 4px 8px rgba(#000, 0.25);
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        width: $page_width;
+        height: 64px;
+        margin: 0 auto;
+
+        .cell {
+            grid-row: 1;
+            height: 64px;
+        }
+        
+        .app {
+            grid-column: 1/4;
+            grid-gap: 16px;
+
+            display: grid;
+            grid-template-columns: 64px auto;
+
+            .icon {
+                grid-column: 1fr;
+
+                img {
+                    width: 64px;
+                    height: 64px;
+                    box-shadow: 0px 0px 4px rgba(#000, 0.75);
+                }
+            }
+
+            .details {
+                line-height: 24px;
+                margin: auto 0;
+                
+                .name {
+                    font-family: 'Teko';
+                    font-size: 24px;
+                    color: #ffcc80;
+                    text-transform: uppercase;
+                }
+                
+                a.github {
+                    text-decoration: none;
+                    font-size: 12px;
+                    color: #998578;
+                    transition: color .25s ease-in-out;
+                    
+                    &:hover {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+        
+        .logo {
+            grid-column: 4/4;
+            padding-top: 48px;
+            background-image: url('../css-images/tuto-gamebuino.png');
+            background-repeat: no-repeat;
+            background-position: top 8px right 0;
+            color: #998578;
+            font-size: 10px;
+            text-align: right;
+        }
+    }
+}
+
+.wrapper {
+    position: relative;
+    width: $page_width;
+    margin: 0 auto;
+
+    nav {
+        position: fixed;
+        top: 126px + 20px;
+        left: 50%;
+        font-size: 12px;
+        
+        ul {
+            list-style: none;
+
+            li a {
+                text-decoration: none;
+            }
+        }
+        
+        &#toc {
+            width: $nav_width;
+            margin-left: (-$page_width*.5) - $nav_width - 20px;
+            text-align: right;
+            line-height: 2em;
+
+            ul {
+                li a {
+                    transition: color .25s ease-in-out;
+                }
+                
+                li.tag-h1 a {
+                    color: lighten(#74655b, 35);
+                }
+                
+                li.tag-h2 a {
+                    color: lighten(#74655b, 20);
+                }
+                
+                li a:hover {
+                    color: #fff;
+                }
+                
+                li.active a {
+                    color: #ffc;
+                }
+            }
+        }
+
+        &#pages {
+            margin-left: $page_width*.5 + 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+
+            ul {
+                li {
+                    margin-bottom: 1em;
+                    border-radius: 4px;
+                    background-color: rgba(#000, .25);
+                    transition: background-color .25s ease-in-out;
+                    border: 1px solid rgba(#000, .5);
+                    box-shadow: 0 2px 4px rgba(#000, .25);
+                    
+                    a {
+                        display: inline-block;
+                        width: 100%;
+                        padding: 4px 8px;
+                        color: #eeccaa;
+                        transition: color .25s ease-in-out;
+                    }
+
+                    &.active {
+                        background-color: #eeccaa;
+
+                        a {
+                            color: rgba(#000, .6);
+                        }
+                    }
+
+                    &:hover {
+                        background-color: #ffa;
+
+                        a {
+                            color: rgba(#000, .5);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#page {
+    margin-top: 126px;
+    margin-bottom: 40px;
+    padding: 30px $page_side_padding;
+    border-radius: 8px;
+    background: #e5e5e5;
+    color: #74655b;
+    box-shadow: 0px 0px 8px rgba(#000, 0.5);
+    font-size: 14px;
+    line-height: 1.5rem;
+    text-align: justify;
+
+    .heading {
+        display: grid;
+        grid-template-columns: auto 184px;
+        height: 138px;
+        margin-bottom: 30px;
+
+        .description {
+            grid-column: 1/2;
+            margin: auto 0; // vertical align with grid layout!
+
+            h1 {
+                font-size: 24px;
+                font-weight: normal;
+                line-height: 1.25em;
+                color: #332c28;
+                text-shadow: 0 1px 2px rgba(#332c28, .2);
+            }
+            
+            h2 {
+                font-size: 18px;
+                font-weight: normal;
+                line-height: 1.5em;
+                color: #74655b;
+            }
+
+            p.update_time {
+                font-size: 12px;
+                font-style: italic;
+                color: #bfa796;
+            }
+        }
+
+        .screen {
+            position: relative;
+            grid-column: 2/2;
+            background-image: url('../css-images/gamebuino-screen.png');
+            background-repeat: no-repeat;
+            background-position: top right;
+
+            img {
+                position: absolute;
+                top: 3px;
+                left: 19px;
+            }
+        }
+    }
+}
+
+#credit {
+    margin: -30px auto;
+    font-size: 10px;
+    color: rgba(#fff, .4);
+    text-align: center;
+}
+
+.reverse {
+    display: inline-block;
+    transform: rotate(.5turn);
+}

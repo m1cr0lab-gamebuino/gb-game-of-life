@@ -1,0 +1,6 @@
+.DS_Store
+.sass-cache
+.vscode
+_site
+bin
+*.code-workspace

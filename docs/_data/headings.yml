@@ -1,0 +1,18 @@
+- name: Introduction
+  link: /
+- name: Les bases
+  link: /les-bases.html
+- name: Optimisation
+  link: /optimisation.html
+- name: POO
+  link: /poo.html
+- name: MVC
+  link: /mvc.html
+- name: Interactivité
+  link: /interactivite.html
+- name: Son & Lumière
+  link: /son-et-lumiere.html
+- name: Finalisation
+  link: /finalisation.html
+- name: Conclusion
+  link: /conclusion.html
