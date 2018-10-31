@@ -30,7 +30,7 @@ Dans les grande lignes, vous aller apprendre à :
     - accélérer la vitesse d'exécution,
     - économiser l'espace mémoire,
 - mieux organiser votre code avec la Programmation Orientée Objet,
-- concevoir vos applications avec une architecture Model View Controller.
+- concevoir vos applications avec une architecture Model View Controller,
 - intercepter les événements lorsque l'utilisateur appuie sur les boutons,
 - gérer des menus dans vos application,
 - programmer un gestionnaire des LEDs de la console,

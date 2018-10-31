@@ -1422,4 +1422,4 @@ Juste pour le fun, et pour clore ce chapitre en images, voici une petite démons
 
 ![Edition Demo](assets/figures/v5/edit-demo.gif){: width="320" height="256" class="shadow" }
 
-> L'option `PATTERN` dans le menu sera exploitée dans un prochain chapitre  <i class="far fa-smile-wink"></i>
+> L'option `PATTERNS` dans le menu sera exploitée dans un prochain chapitre  <i class="far fa-smile-wink"></i>

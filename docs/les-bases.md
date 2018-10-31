@@ -122,9 +122,9 @@ void bufferize() {
 
 Ensuite, pour appliquer les règles d'évolution, nous allons avoir besoin de calculer, pour chaque cellule, le nombre de cellules vivantes présentes dans son voisinage. Le voisinage de la cellule `grid[x][y]` peut être décrit par l'ensemble des cellules `grid[x+j][y+i]` lorsque `i∈[-1,1]` et `j∈[-1,1]` et (`i≠0` ou `j≠0`) :
 
-![neighbours](assets/figures/v1/neighbours.png){: width="268" height="164"}
+![neighbours](assets/figures/v1/neighbours.png){: width="281" height="146"}
 
-En effet, si `i=0` et `j=0` alors `grid[x+j][y+i]=grid[x][y]`, c'est-à-dire la cellule `grid[x][y]` elle-même... or elle ne fait pas partie de son propre voisinage !
+En effet, le cas où `i=0` et `j=0` correspond à la cellule `grid[x][y]`, c'est-à-dire la cellule centrale... qui ne fait bien sûr pas partie de son propre voisinage !
 
 Si on traduit tout ceci par du code, voici comment pourrait s'écrire la fonction `neighbours(x,y)` chargée de calculer le nombre de cellules vivantes dans le voisinage de `grid[x][y]` :
 
@@ -149,7 +149,9 @@ uint8_t neighbours(uint8_t x, uint8_t y) {
 
 Mais **attention**, il faut prendre quelques précautions : n'oublions pas que nous travaillons sur un espace clos et fini et que cette fonction doit aussi pouvoir s'appliquer aux cellules de bordure sans risquer de provoquer une erreur. Nous devons donc apporter une petite correction aux coordonnées `x+j` et `y+i` pour ne pas risquer de sortir des limites du tableau `grid`. En effet, prenons l'exemple de la cellule de coordonnées `(0,0)`. Son voisinage est constitué des cellules dont les coordonnées sont les suivantes :
 
-![fixed neighbours](assets/figures/v1/fixed-neighbours.png){: width="190" height="190"}
+![fixed neighbours](assets/figures/v1/fixed-neighbours.png){: width="122" height="118"}
+
+Aussi, toutes les cellule de la frange du haut n'ont pas pour ordonnée `-1` (on serait en dehors de la grille) mais `H-1`. De la même façcon, toutes celles de la frange de gauche n'ont pas pour abscisse `-1` (ici aussi, on serait en dehors de la grille) mais `W-1`.
 
 Plus généralement, voici les corrections que nous devons apporter au calcul des coordonnées des cellules voisines :
 
@@ -163,15 +165,15 @@ uint8_t neighbours(uint8_t x, uint8_t y) {
                 u = x + j;
                 v = y + i;
 
-                if (u == -1) {
+                if (u == -1) {       // la frange de gauche
                     u = W - 1;
-                } else if (u == W) {
+                } else if (u == W) { // la frange de droite
                     u = 0;
                 }
 
-                if (v == -1) {
+                if (v == -1) {       // la frange du haut
                     v = H - 1;
-                } else if (v == H) {
+                } else if (v == H) { // la frange du bas
                     v = 0;
                 }
 
@@ -185,7 +187,15 @@ uint8_t neighbours(uint8_t x, uint8_t y) {
 }
 ```
 
-On pourait utiliser ici l'opérateur de congruence `%`, aussi connu sous le nom de `modulo`, pour avoir un code plus concis... mais les performances à l'exécution s'en trouveraient  dégradées du fait de l'augmentation des calculs nécessaires...
+On pourrait ici utiliser l'opérateur de congruence `%` (on l'appelle aussi `modulo`) pour obtenir un code plus concis :
+
+```c++
+u = (u + W) % W;
+v = (v + H) % H;
+```
+
+Mais les performances à l'exécution s'en trouveraient  dégradées puisque les calculs nécessaires sont plus nombreux dans ce cas...
+
 
 ## Application des règles évolutives
 
@@ -239,7 +249,7 @@ Et voilà ce que ça donne (sur une boucle de 10 secondes) :
 
 ![demo 1](assets/figures/v1/demo-1.gif){: width="320" height="256" class="shadow"}
 
-La capture d'écran ci-dessus reproduit *grosso modo* la vitesse d'exécution de notre code sur la console... vous pouvez constater que c'est pas franchement véloce !... Le processeur ne parvient même pas à tenir la fréquence par défaut des 25 frames par secondes (on est ici à environ 9 frames par secondes). Bon ok, la console dispose de ressources de calcul et de mémoire limitées... mais tout de même ! Nous verrons dans le prochain chapitre comment optimiser notre code et du même coup accélérer la vitesse d'exécution et diminuer la consommation de RAM.
+La capture d'écran ci-dessus reproduit *grosso modo* la vitesse d'exécution de notre code sur la console... vous pouvez constater que ça n'est pas franchement véloce !... Le processeur ne parvient même pas à tenir la fréquence par défaut des 25 frames par secondes (on est ici à environ 9 frames par secondes). Bon ok, la console dispose de ressources de calcul et de mémoire limitées... mais tout de même ! Nous verrons donc dans le prochain chapitre comment optimiser notre code et du même coup accélérer la vitesse d'exécution et diminuer la consommation de RAM.
 
 Bon, mais pour le moment, si on mettait un peu plus de couleurs dans tout ça ?
 
@@ -248,7 +258,7 @@ Bon, mais pour le moment, si on mettait un peu plus de couleurs dans tout ça ?
 
 L'idée sous-jacente est simple : on peut décider d'attribuer une couleur (choisie sur une palette prédéfinie) à chaque cellule en fonction de son *âge*, c'est-à-dire du nombre de générations auxquelles elle a survécu.
 
-Nous nous appuierons pour cela sur la [palette de couleurs officielle](https://gamebuino.com/creations/color-palettes) de la Gamebuino META, mais que nous adapterons en indexant ses couleurs dans un ordre différent :
+Nous nous appuierons pour cela sur la [palette de couleurs officielle](https://gamebuino.com/creations/color-palettes) de la Gamebuino META, que nous adapterons en indexant ses couleurs dans un ordre différent :
 
 ```c++
 const Color PALETTE[] = {

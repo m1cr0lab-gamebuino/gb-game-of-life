@@ -58,7 +58,7 @@ const uint8_t Pattern::CLOWN[] = {
 };
 ```
 
-La technique imposant d'encoder les états des cellues par groupes de deux, si un motif contient un nombre impair de cellules en largeur, il suffira simplement d'ajouter une cellule morte (avec la valeur `0`) sur toute la dernière colonne du motif pour retomber sur un nombre pair.
+La technique imposant d'encoder les états des cellules par groupes de deux, si un motif contient un nombre impair de cellules en largeur, il suffira simplement d'ajouter une cellule morte (avec la valeur `0`) sur toute la dernière colonne du motif pour retomber sur un nombre pair.
 
 Voilà donc la définition de l'ensemble des motifs :
 
@@ -129,7 +129,7 @@ class Automaton
 
         void addPattern(const uint8_t* pattern, uint8_t x, uint8_t y);
     
-    // le reste des déclarations reste inchangés
+    // le reste des déclarations reste inchangé
 };
 ```
 
@@ -152,7 +152,7 @@ void Automaton::addPattern(const uint8_t* pattern, uint8_t x, uint8_t y) {
     }
 }
 
-// le reste des défintions reste inchangé
+// le reste des définitions reste inchangé
 ```
 
 Il faut donc maintenant ajouter une méthode dans `AutomatonController` qui permette de propager le motif jusqu'à son modèle `Automaton` (puisque `GameController` sollicitera `AutomatonController` pour effectuer cette opération) :
@@ -166,7 +166,7 @@ class AutomatonController
 
         void addPattern(const uint8_t* pattern, uint8_t x, uint8_t y);
     
-    // le reste des déclarations reste inchangés
+    // le reste des déclarations reste inchangé
 };
 ```
 
@@ -191,7 +191,7 @@ class GameController
 
         void addPattern(const uint8_t* pattern, uint8_t x, uint8_t y);
     
-    // le reste des déclarations reste inchangés
+    // le reste des déclarations reste inchangé
 };
 ```
 
