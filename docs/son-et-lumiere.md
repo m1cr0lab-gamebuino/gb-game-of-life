@@ -76,9 +76,9 @@ class Light
         //
         // aucun effet actif
         static const uint8_t FX_NONE;
-        // les LEDs s'illuminent vrièvement par un flash
+        // les LEDs s'illuminent brièvement par un flash
         static const uint8_t FX_FLASH;
-        // les LEDs s'illumine continuellement comme si elles "respiraient"
+        // les LEDs s'illuminent continuellement comme si elles "respiraient"
         static const uint8_t FX_BREATHE;
 
         // teinte appliquée sur les LEDs
@@ -122,7 +122,7 @@ class Light
         void loop();
         // éteint immédiatement les LEDs
         void off();
-        // applique l'effet FX_FLASH aix LEDs
+        // applique l'effet FX_FLASH aux LEDs
         void flash(float hue, float duration);
         // applique l'effet FX_BREATHE aux LEDs
         void breathe(float hue, float period);
@@ -171,7 +171,7 @@ float Light::getBrightness() {
 }
 
 // boucle principale qui effectue un aiguillage
-// sur la boucle dérivée selon l'effect appliqué
+// sur la boucle dérivée selon l'effet appliqué
 // (si aucun effet n'est appliqué, la boucle ne fait rien)
 void Light::loop() {
     switch (this->fx) {
@@ -536,7 +536,7 @@ void GameController::lightOff() {
 // le reste des définitions reste inchangé
 ```
 
-Et voilà, tout est désormais fonctionnel ! Les LEDs flashent en rouge lorsqu'on appuie sur le bouton `B` pour suspendre la simulation ou qu'on avance pas à pas. Les LEDs respirent en vert lorsque la simulation est (re)lancée. Et les LEDs respirent en bleu lorsqu'on est en mode édition. Effets garantis !
+Et voilà, tout est désormais fonctionnel ! Les LEDs flashent en rouge orangé lorsqu'on appuie sur le bouton `B` pour suspendre la simulation ou qu'on avance pas à pas. Les LEDs respirent en vert lorsque la simulation est (re)lancée. Et les LEDs respirent en bleu lorsqu'on est en mode édition. Effets garantis !
 
 Tiens d'ailleurs, pour rester dans le ton du mode édition, j'ai juste modifié la valeur affectée à la cellule `grid[x][y]` quand l'utilisateur engendre une cellule vivante de façon à ce qu'elle soit affichée avec la couleur `LIGHTBLUE` et non plus `LIGHTGREEN` :
 

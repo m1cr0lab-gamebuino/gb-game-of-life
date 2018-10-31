@@ -268,7 +268,7 @@ Pour le moment, `UserController` ne fait rien : aucun événement utilisateur n'
 
 # Arrêter et relancer la simulation
 
-Pour cela, il suffit d'implanter une sort de bascule au sein du contrôleur principal qui lui permette alternativement de stoper ou de redémarrer les cycles de simulation. Nous allons donc déclarer une variable d'état qui caractérise un mode de gestion du contrôle, basculant entre deux états possibles : la suspension ou l'exécution des cycles de simulation.
+Pour cela, il suffit d'implanter une sort de bascule au sein du contrôleur principal qui lui permette alternativement de stopper ou de redémarrer les cycles de simulation. Nous allons donc déclarer une variable d'état qui caractérise un mode de gestion du contrôle, basculant entre deux états possibles : la suspension ou l'exécution des cycles de simulation.
 
 <div class="filename">GameController.h</div>
 

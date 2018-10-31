@@ -43,7 +43,7 @@ class Pattern
 #endif
 ```
 
-La vraie question est *comment allons-nous définir ces motifs ?* L'idée est de pouvoir configurer la grille de l'automate avec des valeurs entières comprises entre `0` et `15` (pour un affichage en `16` couleurs). Et vous vous souvenez probalement qu'en utilisant un codage bit à bit, nous pouvions encoder l'état de 2 cellules sur un simple octet. Nous allons donc réutiliser ici ce format d'encodage pour définir les motifs en y ajoutant un peu de couleur. Prenons l'exemple du motif du `CLOWN` :
+La vraie question est *comment allons-nous définir ces motifs ?* L'idée est de pouvoir configurer la grille de l'automate avec des valeurs entières comprises entre `0` et `15` (pour un affichage en `16` couleurs). Et vous vous souvenez probalement qu'en utilisant un codage bit à bit, nous pouvions encoder l'état courant et l'état à la génération précédente d'une même cellule sur un simple octet. Nous allons donc suivre le même principe ici et définir un format d'encodage pour représenter les couleurs de deux cellules adjacentes sur un même octet. Prenons l'exemple du motif du `CLOWN` :
 
 ![Encodage des motifs](assets/figures/v7/pattern-coding.png)
 
@@ -223,7 +223,7 @@ Pour cela, voyons comment redéclarer notre classe `UserController` :
 <div class="filename">UserController.h</div>
 
 ```c++
-// Il faut intégrer la déclaration de la classe qui définit les motifs :
+// il faut intégrer la déclaration de la classe qui définit les motifs :
 #include "Pattern.h"
 
 class UserController
@@ -283,9 +283,9 @@ void UserController::openMainMenu() {
 void UserController::openPatternMenu() {
     GameController* gc = this->gameController;
 
-    uint8_t selected = gb.gui.menu("SELECT AN OPTION:", PATTERN_MENU);
+    uint8_t selected = gb.gui.menu("SELECT A PATTERN:", PATTERN_MENU);
 
-    // Si l'utilisateur choisit d'appliquer un motif, c'est-à-dire qu'il
+    // si l'utilisateur choisit d'appliquer un motif, c'est-à-dire qu'il
     // n'aura pas sélectionné la dernière option du menu `EXIT` :
     if (selected != 4) {
         // alors on nettoie l'automate avant d'appliquer le motif
@@ -317,6 +317,6 @@ void UserController::openPatternMenu() {
 
 Et voilà ce que ça donne si l'utilisateur choisit par exemple le motif du `CLOWN` :
 
-![Patterns](assets/figures/v7/demo-clown.gif){: width="320" height="256" class="shadow" }
+![Patterns](assets/figures/v7/demo-clown.gif){: width="240" height="192" class="shadow" }
 
-Voilà, l'application est désormais **TERMINÉE** ! Le code source complet de cette septième et dernière version est [disponible ici]({{ site.github.repository_url | append: '/blob/master/sources/v7/GameOfLife/' }}).
+Voilà, cette application consacrée au Jeu de la Vie est désormais **TERMINÉE** ! Le code source complet de cette septième et dernière version est [disponible ici]({{ site.github.repository_url | append: '/blob/master/sources/v7/GameOfLife/' }}).
