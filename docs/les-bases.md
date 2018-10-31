@@ -151,7 +151,7 @@ Mais **attention**, il faut prendre quelques précautions : n'oublions pas que n
 
 ![fixed neighbours](assets/figures/v1/fixed-neighbours.png){: width="122" height="118"}
 
-Aussi, toutes les cellule de la frange du haut n'ont pas pour ordonnée `-1` (on serait en dehors de la grille) mais `H-1`. De la même façcon, toutes celles de la frange de gauche n'ont pas pour abscisse `-1` (ici aussi, on serait en dehors de la grille) mais `W-1`.
+Aussi, toutes les cellules de la frange du haut n'ont pas pour ordonnée `-1` (on serait en dehors de la grille) mais `H-1`. De la même façon, toutes celles de la frange de gauche n'ont pas pour abscisse `-1` (ici aussi, on serait en dehors de la grille) mais `W-1`.
 
 Plus généralement, voici les corrections que nous devons apporter au calcul des coordonnées des cellules voisines :
 
