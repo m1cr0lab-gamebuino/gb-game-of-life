@@ -91,7 +91,7 @@ void UserController::openMainMenu() {
 void UserController::openPatternMenu() {
     GameController* gc = this->gameController;
 
-    uint8_t selected = gb.gui.menu("SELECT PATTERN:", PATTERN_MENU);
+    uint8_t selected = gb.gui.menu("SELECT A PATTERN:", PATTERN_MENU);
 
     if (selected != 4) {
         gc->clear();
