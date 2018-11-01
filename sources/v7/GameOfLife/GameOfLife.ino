@@ -3,10 +3,9 @@
  * 
  * auteur  : Stéphane Calderoni
  * date    : 28 octobre 2018
- * version : 6
+ * version : 7
  * 
- * - Ajout d'un gestionnaire MVC d'activation des LEDs
- * - Ajout d'un contrôleur de gestion du son
+ * - Ajout de la gestion des motifs remarquables du Jeu de la Vie
  */
 
 #include "bootstrap.h"
