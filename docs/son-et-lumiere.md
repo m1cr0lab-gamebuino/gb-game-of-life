@@ -680,7 +680,7 @@ class GameController
 };
 ```
 
-<div class="filename">GameController.h</div>
+<div class="filename">GameController.cpp</div>
 
 ```c++
 GameController::GameController() : state(STATE_SUSPENDED) {
@@ -722,7 +722,7 @@ void GameController::step() {
 
 void GameController::stopEdit() {
     this->state = STATE_SUSPENDED;
-    // idem lrosqu'il sort du mode édition :
+    // idem lorsqu'il sort du mode édition :
     this->soundController->playStopEdit();
     this->lightController->flash(180, .25);
 }
