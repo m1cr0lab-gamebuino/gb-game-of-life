@@ -18,8 +18,8 @@ void Automaton::kill(size_t x, size_t y) {
 
 void Automaton::clear() {
     size_t x,y;
-    size_t xsup = W+1; // borne supérieure de x
-    size_t ysup = H+1; // borne supérieure de y
+    size_t xsup = W+1;
+    size_t ysup = H+1;
     for (y=1; y<ysup; y++) {
         for (x=1; x<xsup; x++) {
             this->grid[x][y] = 0;
@@ -29,8 +29,8 @@ void Automaton::clear() {
 
 void Automaton::randomize() {
     size_t x,y;
-    size_t xsup = W+1; // borne supérieure de x
-    size_t ysup = H+1; // borne supérieure de y
+    size_t xsup = W+1;
+    size_t ysup = H+1;
     for (y=1; y<ysup; y++) {
         for (x=1; x<xsup; x++) {
             this->grid[x][y] = random(0,2) == 0 ? random(1, 4) : 0;
