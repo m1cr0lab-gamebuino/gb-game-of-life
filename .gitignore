@@ -4,4 +4,5 @@
 .vscode
 ._*
 _site
+artwork
 *.code-workspace
