@@ -37,7 +37,9 @@ Je vous laisse découvrir la magie que peuvent engendrer ces règles dans une pe
 
 Sur une grille infinie, chaque cellule possède bien huit voisines... mais sur une grille finie comme l'écran de la META, nous allons avoir un problème pour déterminer le voisinage des cellules de bordure ! Une solution consiste à faire en sorte que la grille se referme sur elle-même, comme si on joignait la bordure du haut avec celle du bas, et celle de gauche avec celle de droite. Imaginez notre grille dessinée sur une feuille de papier. Pour joindre la bordure du haut avec celle du bas, il suffit de rouler la feuille de manière à former un tube. La topologie de la grille devient ainsi cylindrique, et les extrémités du cylindre sont alors les cercles formés respectivement par la bordure de gauche et la bordure de droite. Si maintenant on joint les deux extrémités du cylindre, on forme alors une sorte d'anneau, qu'on appelle un *tore*. La topologie de la grille devient alors torique :
 
-![torus](https://course.ccs.neu.edu/cs2500/torus.png){: width="214" height="90"}
+<!-- ![torus](https://course.ccs.neu.edu/cs2500/torus.png){: width="214" height="90"} -->
+
+![torus](assets/figures/v1/torus.svg){: width="50%" }
 
 Nous adopterons cette solution pour ne pas avoir à inventer de nouvelles règles concernant les cellules de bordure, ni risquer d'obtenir des comportements singuliers avec des voisinages incomplets. Voici les voisinages que l'on obtient sur les bordures avec une topologie torique :
 
